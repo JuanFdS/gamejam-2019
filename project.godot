@@ -23,6 +23,10 @@ config/icon="res://icon.png"
 
 singletons=[  ]
 
+[gui]
+
+theme/custom="res://new_theme.tres"
+
 [image_loader]
 
 filter=false

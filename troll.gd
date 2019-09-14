@@ -6,10 +6,9 @@ extends KinematicBody2D
 # Member variables
 export var direction = "up"
 var motion = Vector2()
-const upMotion = Vector2(2, -1)
 
 func _physics_process(delta):
-	
+	var upMotion = get_tree().get_current_scene().trollDirection
 	
 	#if Input.is_action_pressed("move_up"):
 	#motion += Vector2(0, -1)
@@ -21,9 +20,9 @@ func _physics_process(delta):
 
 	match direction:
 		"up":
-			motion += upMotion
+			motion = upMotion
 		"down":
-			motion += upMotion * (-1)
+			motion = upMotion * (-1)
 	
 	motion = motion.normalized() * get_tree().get_current_scene().trollSpeed
 
