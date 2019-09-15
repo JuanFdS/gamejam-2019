@@ -28,12 +28,17 @@ func _ready():
 	reglamento = get_tree().get_current_scene().get_node("Reglamento")
 	activeSkills = get_tree().get_current_scene().get_node("ActiveSkills")
 	if(get_children().size() == 0):
-			createButton(0)
-			createButton(1)
-			createButton(2)
+		_re_role_skills()
 
+func _re_role_skills():
+	print("holus!")
+	for child in get_children():
+		removeButton(child)
+	createButton(0)
+	createButton(1)
+	createButton(2)
+	
 func createButton(positionInMenu):
-	print(positionInMenu)
 	var bot1 = Button.new()
 	bot1.set_size((self.get_size() / 3))
 	bot1.set_position(bot1.get_position() + positionInMenu * Vector2(bot1.get_size().x, 0))
@@ -49,6 +54,9 @@ func removeButton(button):
 func handleButtonPressed(skill, button, positionInMenu):
 	reglamento.activateSkill(skill)
 	var ruleName = button.text
-	self.removeButton(button)
 	createButton(positionInMenu)
 	activeSkills.createButton(ruleName)
+
+
+func _on_Reglamento_re_role_skills():
+	_re_role_skills()

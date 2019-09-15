@@ -13,8 +13,9 @@ func _ready():
 #	pass
 
 func showWinFor(team):
-	self.visible = true
-	self.dialog_text = "gano el equipo " + team
+	if(!visible):
+		self.visible = true
+		self.dialog_text = "gano el equipo " + team
 
 
 func _on_win_dialog_confirmed():

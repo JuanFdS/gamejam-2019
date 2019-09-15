@@ -13,6 +13,8 @@ var backward = forward * (-1)
 const baseTrollSpeed = 80
 const baseAmarilloSpeed = 100
 
+signal re_role_skills()
+
 var stats = {
 		Troll: {
 				"baseSpeed": baseTrollSpeed,
@@ -34,6 +36,8 @@ func _ready():
 
 func activateSkill(skill):
 	call(skill.rule, skill.get("params", []))
+	emit_signal("re_role_skills")
+
 
 func stat(unit, statName):
 	return stats[unit][statName]
