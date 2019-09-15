@@ -8,7 +8,8 @@ var powers = [
 	createPower("trolls -> amarillos","cambiarPorAmarillos", "troll.gd"),
 	createPower("amarillos -> trolls","cambiarPorTrolls", "amarillo.gd"),
 	createPower("X0.5","reducirVelocidad",  "troll.gd"),
-	createPower("reverse trolls","reverseDirection", "troll.gd")
+	createPower("reverse trolls","reverseDirection", "troll.gd"),
+	createPower("reverse amarillos","reverseDirection", "amarillo.gd")
 ]
 
 func createPower(name, rule, affectedUnit):

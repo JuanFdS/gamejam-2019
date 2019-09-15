@@ -21,10 +21,12 @@ func _physics_process(delta):
 
 	match direction:
 		"up":
-			motion += ruleDirection
+			motion = ruleDirection
 		"down":
-			motion += ruleDirection * (-1)
+			motion = ruleDirection * (-1)
 	
 	motion = motion.normalized() * rules().speed(get_script())
+
+	print(motion)
 
 	move_and_slide(motion)

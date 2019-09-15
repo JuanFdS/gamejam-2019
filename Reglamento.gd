@@ -10,8 +10,8 @@ var reglas = Array()
 var forward = Vector2(2,-1)
 var backward = forward * (-1)
 
-const baseTrollSpeed = 160
-const baseAmarilloSpeed = 200
+const baseTrollSpeed = 80
+const baseAmarilloSpeed = 100
 
 var stats = {
 		Troll: {
