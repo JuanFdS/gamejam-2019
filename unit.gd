@@ -7,11 +7,18 @@ extends KinematicBody2D
 export var direction = "up"
 var motion = Vector2()
 const upMotion = Vector2(2, -1)
+var moving = true
 
-func destroy():
+func noclip():
 	set_collision_mask_bit(0, false)
 	set_collision_layer_bit(0, false)
+
+func destroy():
+	noclip()
 	queue_free()
+
+func stopMoving():
+	moving = false
 
 func rules():
 	return self.get_tree().get_root().get_node("dungeon").get_node("Reglamento")
@@ -30,12 +37,13 @@ func calculated_direction():
 			return ruleDirection * (-1)
 
 func _physics_process(delta):
+	if(not(moving)):
+		return
+
 	var thisFrameDirection = calculated_direction()
 
 	face_direction(thisFrameDirection)
 	
 	motion = thisFrameDirection.normalized() * rules().speed(get_script())
-
-	print(motion)
 
 	move_and_slide(motion)

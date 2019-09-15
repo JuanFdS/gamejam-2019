@@ -4,13 +4,13 @@
 flags = 4
 load_path = "res://.import/isotilesPosta.png-73a407fe6cf6e0224ae1d3ae72f71931.stex"
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( -4, -30, 60, 2, -4, 34, -68, 2 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( -4, -22, 12, -22, 28, -6, 4, 10, -4, 10, -20, -6 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( -21.905, 23.3748, 50.095, -8.62516, 66.095, -0.62516, -5.90501, 31.3748 )
 
 [resource]
@@ -46,7 +46,7 @@ points = PoolVector2Array( -21.905, 23.3748, 50.095, -8.62516, 66.095, -0.62516,
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -62,7 +62,7 @@ points = PoolVector2Array( -21.905, 23.3748, 50.095, -8.62516, 66.095, -0.62516,
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
@@ -78,7 +78,7 @@ points = PoolVector2Array( -21.905, 23.3748, 50.095, -8.62516, 66.095, -0.62516,
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0

@@ -30,7 +30,6 @@ func _ready():
 	pass # Replace with function body.
 
 func activateSkill(skill):
-	print(skill)
 	call(skill.rule, skill.get("params", []))
 	
 
