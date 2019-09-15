@@ -16,16 +16,25 @@ func destroy():
 func rules():
 	return self.get_tree().get_root().get_node("dungeon").get_node("Reglamento")
 
-func _physics_process(delta):
-	var ruleDirection = rules().direction(get_script())
+func face_direction(direction):
+	for child in get_children():
+		if(child.is_class("AnimatedSprite")):
+			child.flip_h = direction != upMotion
 
+func calculated_direction():
+	var ruleDirection = rules().direction(get_script())
 	match direction:
 		"up":
-			motion = ruleDirection
+			return ruleDirection
 		"down":
-			motion = ruleDirection * (-1)
+			return ruleDirection * (-1)
+
+func _physics_process(delta):
+	var thisFrameDirection = calculated_direction()
+
+	face_direction(thisFrameDirection)
 	
-	motion = motion.normalized() * rules().speed(get_script())
+	motion = thisFrameDirection.normalized() * rules().speed(get_script())
 
 	print(motion)
 
