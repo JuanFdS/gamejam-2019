@@ -19,4 +19,4 @@ func showWinFor(team):
 
 
 func _on_win_dialog_confirmed():
-	get_tree().reload_current_scene()
+	return get_tree().reload_current_scene()

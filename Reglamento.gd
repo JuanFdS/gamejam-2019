@@ -5,7 +5,6 @@ extends Node
 # var b = "text"
 const Troll = preload("troll.gd")
 const Amarillo = preload("amarillo.gd")
-var reglas = Array()
 
 var forward = Vector2(2,-1)
 var backward = forward * (-1)
@@ -85,10 +84,10 @@ func replaceUnits(type, scenesOfUnitsToSpawn):
 		dungeon().spawnUnit(load(scenesOfUnitsToSpawn), unitPosition, unitDirection)
 
 func cambiarPorAmarillos(params):
-	replaceUnits(params.affectedUnit, "res://amarillo.tscn")
+	replaceUnits(params.affectedUnit, dungeon().AMARILLO_SCENE)
 
 func cambiarPorTrolls(params):
-	replaceUnits(params.affectedUnit, "res://troll.tscn")
+	replaceUnits(params.affectedUnit, dungeon().TROLL_SCENE)
 
 func reverseDirection(params):
 	var unit = params.affectedUnit

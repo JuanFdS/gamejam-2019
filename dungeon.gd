@@ -1,5 +1,12 @@
 extends Node2D
 
+const TROLL_SCENE = "res://troll.tscn"
+const AMARILLO_SCENE = "res://amarillo.tscn"
+const UNIT_TYPES = [
+	TROLL_SCENE,
+	AMARILLO_SCENE
+]
+
 func spawnUnit(unitScene, position, direction):
 	var newUnit = unitScene.instance()
 	newUnit.position = position
