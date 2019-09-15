@@ -24,19 +24,19 @@ func createButton(positionInMenu):
 	bot1.text = powers[skillNumber].name
 
 func ruleX4Speed(button, positionInMenu):
-	get_tree().get_current_scene().trollSpeed *= 4
+	get_tree().get_current_scene().get_node("Reglamento").trollSpeed *= 4
 	self.remove_child(button)
 	createButton(positionInMenu)
 	get_tree().get_current_scene().get_node("ActiveSkills").createButton(button)
 	
 func ruleXMedioSpeed(button, positionInMenu):
-	get_tree().get_current_scene().trollSpeed *= 0.5
+	get_tree().get_current_scene().get_node("Reglamento").trollSpeed *= 0.5
 	self.remove_child(button)
 	createButton(positionInMenu)
 	get_tree().get_current_scene().get_node("ActiveSkills").createButton(button)
 	
 func changeDirection(button, positionInMenu):
-	get_tree().get_current_scene().trollDirection *= (-1)
+	get_tree().get_current_scene().get_node("Reglamento").trollDirection *= (-1)
 	self.remove_child(button)
 	createButton(positionInMenu)
 	get_tree().get_current_scene().get_node("ActiveSkills").createButton(button)
