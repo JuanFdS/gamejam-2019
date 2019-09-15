@@ -1,20 +1,34 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://amarillo.gd" type="Script" id=1]
-[ext_resource path="res://troll.png" type="Texture" id=2]
+[ext_resource path="res://yogurt_/yogurt_attack_base.png" type="Texture" id=2]
+[ext_resource path="res://yogurt_/yogurt_attack_fase_1.png" type="Texture" id=3]
+[ext_resource path="res://yogurt_/yogurt_attack_fase_2.png" type="Texture" id=4]
+[ext_resource path="res://yogurt_/yogurt_base.png" type="Texture" id=5]
+[ext_resource path="res://yogurt_/yogurt_left.png" type="Texture" id=6]
+[ext_resource path="res://yogurt_/yogurt_right.png" type="Texture" id=7]
+[ext_resource path="res://yogurt_/yogurt_to_attack.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
 
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="troll" type="KinematicBody2D"]
 script = ExtResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 15.03, 16.86, 0, 1 )
-self_modulate = Color( 1, 0.843137, 0, 1 )
-position = Vector2( -3.94334, -36.924 )
-texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.342697, -0.980721 )
 shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 3.05176e-05, -5.10277 )
+scale = Vector2( 0.234582, 0.234582 )
+frames = SubResource( 2 )
+playing = true
