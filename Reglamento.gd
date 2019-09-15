@@ -44,3 +44,6 @@ func cambiarTrollsPorAmarillos():
 
 func cambiarAmarillosPorTrolls():
 	replaceUnits("amarillo.gd", "res://troll.tscn")
+	
+func reverseTrollDirection():
+	trollDirection *= (-1)

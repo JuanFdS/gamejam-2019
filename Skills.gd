@@ -1,48 +1,45 @@
 extends Container
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const powers = [
+	{"name":"troll X4","rule":"duplicarVelocidadTroll"},
+	{"name":"amarillo X4","rule":"aumentarAmarillo"},
+	{"name":"trolls -> amarillos","rule":"cambiarTrollsPorAmarillos"},
+	{"name":"amarillos -> trolls","rule":"cambiarAmarillosPorTrolls"},
+	{"name":"X0.5","rule":"reducirVelocidadTroll"},
+	{"name":"reverse trolls","rule":"reverseTrollDirection"}
+]
+
+var reglamento = null
+var activeSkills = null
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass # Replace with function body.
+func _ready():
+	randomize()
+	reglamento = get_tree().get_current_scene().get_node("Reglamento")
+	activeSkills = get_tree().get_current_scene().get_node("ActiveSkills")
+	if(get_children().size() == 0):
+			createButton(0)
+			createButton(1)
+			createButton(2)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func createButton(positionInMenu):
 	var bot1 = Button.new()
 	bot1.set_size((self.get_size() / 3))
 	bot1.set_position(bot1.get_position() + positionInMenu*Vector2(bot1.get_size().x,0))
 	self.add_child(bot1)
-	var powers = [{"name":"X4","handler":"ruleX4Speed"},
-	{"name":"X0.5","handler":"ruleXMedioSpeed"},
-	{"name":"reverse","handler":"changeDirection"}]
-	randomize()
-	var skillNumber = randi()%3 
+	var skillNumber = randi()%powers.size() 
 	print(skillNumber)
-	bot1.connect("pressed",self,powers[skillNumber].handler,[bot1, positionInMenu])
+	bot1.connect("pressed", self, "handleButtonPressed", [powers[skillNumber].rule, bot1, positionInMenu])
 	bot1.text = powers[skillNumber].name
 
-func ruleX4Speed(button, positionInMenu):
-	get_tree().get_current_scene().get_node("Reglamento").trollSpeed *= 4
+func removeButton(button):
 	self.remove_child(button)
+	button.queue_free()
+
+func handleButtonPressed(rule, button, positionInMenu):
+	reglamento.call(rule)
+	var ruleName = button.text
+	self.removeButton(button)
 	createButton(positionInMenu)
-	get_tree().get_current_scene().get_node("ActiveSkills").createButton(button)
-	
-func ruleXMedioSpeed(button, positionInMenu):
-	get_tree().get_current_scene().get_node("Reglamento").trollSpeed *= 0.5
-	self.remove_child(button)
-	createButton(positionInMenu)
-	get_tree().get_current_scene().get_node("ActiveSkills").createButton(button)
-	
-func changeDirection(button, positionInMenu):
-	get_tree().get_current_scene().get_node("Reglamento").trollDirection *= (-1)
-	self.remove_child(button)
-	createButton(positionInMenu)
-	get_tree().get_current_scene().get_node("ActiveSkills").createButton(button)
-	
-func _process(delta):
-	if(get_children().size() == 0):
-		createButton(0)
-		createButton(1)
-		createButton(2)
+	activeSkills.createButton(ruleName)

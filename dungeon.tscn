@@ -1,17 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://dungeon.gd" type="Script" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://amarillo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://troll.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Reglamento.gd" type="Script" id=5]
-[ext_resource path="res://ruleButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ReducirVelocidadTroll.gd" type="Script" id=7]
-[ext_resource path="res://DuplicarAmarillo.gd" type="Script" id=8]
-[ext_resource path="res://CambiarTrollsPorAmarillos.gd" type="Script" id=9]
-[ext_resource path="res://CambiarAmarillosPorTrolls.gd" type="Script" id=10]
-[ext_resource path="res://Skills.gd" type="Script" id=11]
-[ext_resource path="res://ActiveSkills.gd" type="Script" id=12]
+[ext_resource path="res://Skills.gd" type="Script" id=6]
+[ext_resource path="res://ActiveSkills.gd" type="Script" id=7]
 
 [node name="dungeon" type="Node2D"]
 position = Vector2( 0, -0.37 )
@@ -51,80 +46,34 @@ editor_draw_limits = true
 
 [node name="trollAmarillo" parent="." instance=ExtResource( 3 )]
 position = Vector2( 406.837, 396.131 )
-scale = Vector2( 1, 1 )
 
 [node name="troll" parent="." instance=ExtResource( 4 )]
 position = Vector2( 339.58, 360.024 )
-scale = Vector2( 1, 1 )
 
 [node name="troll2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1739.96, 7.25301 )
-scale = Vector2( 1, 1 )
 direction = "down"
 
 [node name="troll3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1840.81, 89.7981 )
-scale = Vector2( 1, 1 )
 direction = "down"
 
 [node name="troll4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 277.055, 313.88 )
-scale = Vector2( 1, 1 )
 
 [node name="Reglamento" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="duplicarVelocidadTroll2" parent="." instance=ExtResource( 6 )]
-margin_left = 1.98505
-margin_top = -389.15
-margin_right = 264.985
-margin_bottom = -230.15
-
-[node name="reducirVelocidad" parent="." instance=ExtResource( 6 )]
-margin_left = 287.371
-margin_top = -387.406
-margin_right = 550.371
-margin_bottom = -228.406
-text = "Reducir Velocidad"
-regla = ExtResource( 7 )
-
-[node name="duplicarAmarillo" parent="." instance=ExtResource( 6 )]
-margin_left = 577.466
-margin_top = -385.372
-margin_right = 840.466
-margin_bottom = -226.372
-rect_pivot_offset = Vector2( 243.985, 177.946 )
-text = "Duplicar Amarillo"
-regla = ExtResource( 8 )
-
-[node name="cambiarTrollsPorAmarillos" parent="." instance=ExtResource( 6 )]
-margin_left = 1.79114
-margin_top = -202.075
-margin_right = 264.791
-margin_bottom = -43.0753
-rect_pivot_offset = Vector2( 243.985, 177.946 )
-text = "Cambiar Trolls por Amarillos"
-regla = ExtResource( 9 )
-
-[node name="cambiarTrollsPorAmarillos2" parent="." instance=ExtResource( 6 )]
-margin_left = 448.072
-margin_top = -208.837
-margin_right = 844.072
-margin_bottom = -49.8371
-rect_pivot_offset = Vector2( 243.985, 177.946 )
-text = "Cambiar amarillos por trolls"
-regla = ExtResource( 10 )
-
 [node name="Skills" type="Container" parent="."]
-margin_left = -25.0
-margin_top = -34.0
-margin_right = 558.0
-margin_bottom = 58.0
-script = ExtResource( 11 )
+margin_left = 9.0
+margin_top = -365.0
+margin_right = 1032.0
+margin_bottom = -273.0
+script = ExtResource( 6 )
 
 [node name="ActiveSkills" type="Container" parent="."]
 margin_left = -48.0
 margin_top = 459.0
 margin_right = 1867.0
 margin_bottom = 677.0
-script = ExtResource( 12 )
+script = ExtResource( 7 )
