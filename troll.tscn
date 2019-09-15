@@ -43,8 +43,9 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 light_mask = 0
-position = Vector2( 1, -7.00035 )
+position = Vector2( 2, -8.00035 )
 frames = SubResource( 2 )
+frame = 1
 speed_scale = 5.0
 playing = true
 

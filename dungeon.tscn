@@ -132,9 +132,10 @@ drag_margin_v_enabled = false
 editor_draw_limits = true
 
 [node name="trollAmarillo" parent="." instance=ExtResource( 3 )]
-position = Vector2( 406.837, 396.131 )
+position = Vector2( 500.365, 356.012 )
 
 [node name="troll" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 498.917, 302.344 )
 
 [node name="troll2" parent="." instance=ExtResource( 4 )]
@@ -166,7 +167,7 @@ margin_bottom = 627.0
 script = ExtResource( 7 )
 
 [node name="Pozo" parent="." instance=ExtResource( 8 )]
-position = Vector2( 628.113, 269.082 )
+position = Vector2( 780.112, 222.204 )
 rotation = -0.0700366
 scale = Vector2( 1.5, 1.4 )
 z_index = -1

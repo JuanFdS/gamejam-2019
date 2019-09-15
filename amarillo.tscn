@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://amarillo.gd" type="Script" id=1]
 [ext_resource path="res://yogurt_/yogurt_attack_base.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://yogurt_/yogurt_left.png" type="Texture" id=6]
 [ext_resource path="res://yogurt_/yogurt_right.png" type="Texture" id=7]
 [ext_resource path="res://yogurt_/yogurt_to_attack.png" type="Texture" id=8]
+[ext_resource path="res://yogurt_muerto.png" type="Texture" id=9]
+[ext_resource path="res://yogurt_muerto_2.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -18,7 +20,31 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "New Anim"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3.05176e-05, -5.10277 ), Vector2( 0, -100 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fall"
 
 [node name="troll" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -28,8 +54,14 @@ position = Vector2( -0.342697, -0.980721 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 3.05176e-05, -5.10277 )
+position = Vector2( 2.3327, -6.69195 )
 scale = Vector2( 0.234582, 0.234582 )
 frames = SubResource( 2 )
-frame = 3
+frame = 5
 playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 4 )
+anims/fall = SubResource( 3 )
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
