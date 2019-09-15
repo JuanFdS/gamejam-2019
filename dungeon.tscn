@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://dungeon.gd" type="Script" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://win dialog.gd" type="Script" id=9]
 [ext_resource path="res://Spawner.tscn" type="PackedScene" id=10]
 [ext_resource path="res://musica 8bits.ogg" type="AudioStream" id=11]
+[ext_resource path="res://pozo.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -189,10 +190,52 @@ script = ExtResource( 9 )
 [node name="Spawner" parent="." instance=ExtResource( 10 )]
 position = Vector2( 438.78, 354.333 )
 
+[node name="Spawner3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 503.018, 405.723 )
+
+[node name="Spawner4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 368.119, 315.79 )
+
+[node name="Spawner2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1882.04, 15.2055 )
+direction = "down"
+
+[node name="Spawner5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1956.99, 79.443 )
+direction = "down"
+
+[node name="Spawner6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1800.68, -31.9021 )
+direction = "down"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = 0.05
 autoplay = true
+
+[node name="Area2D" parent="." instance=ExtResource( 12 )]
+position = Vector2( 961.143, 475.823 )
+
+[node name="Area2D6" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1442.23, 191.902 )
+
+[node name="Area2D7" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1486.92, 268.14 )
+
+[node name="Area2D8" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1203, 302.316 )
+
+[node name="Area2D2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 643.047, 215.562 )
+
+[node name="Area2D3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 974.288, 120.922 )
+
+[node name="Area2D4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1350.22, 404.843 )
+
+[node name="Area2D5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1097.85, -34.1826 )
 [connection signal="team_win" from="walls1" to="win dialog" method="showWinFor" flags=6]
 [connection signal="team_win" from="walls2" to="win dialog" method="showWinFor" flags=6]
 [connection signal="re_role_skills" from="Reglamento" to="Reglamento" method="_on_Reglamento_re_role_skills"]

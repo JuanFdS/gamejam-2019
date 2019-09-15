@@ -1,6 +1,7 @@
 extends "unit.gd"
 
 func fall():
+	stopMoving()
 	$AnimatedSprite.set_light_mask(524288)
 	$AnimationPlayer.play("fallAnimation")
 
