@@ -3,47 +3,81 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
-var trollSpeed = 160
-var trollDirection = Vector2(2,-1)
-var yellowTrollSpeed = 200
+const Troll = preload("troll.gd")
+const Amarillo = preload("amarillo.gd")
 var reglas = Array()
+
+var forward = Vector2(2,-1)
+var backward = forward * (-1)
+
+const baseTrollSpeed = 160
+const baseAmarilloSpeed = 200
+
+var stats = {
+		Troll: {
+				"baseSpeed": baseTrollSpeed,
+				"speed": baseTrollSpeed,
+				"direction": forward,
+			},
+		Amarillo: {
+				"baseSpeed": baseAmarilloSpeed,
+				"speed": baseAmarilloSpeed,
+				"direction": forward,
+			}
+	}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func trollSpeed():
-	return trollSpeed
+func activateSkill(skill):
+	print(skill)
+	call(skill.rule, skill.get("params", []))
 	
-func yellowTrollSpeed():
-	return yellowTrollSpeed
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
-func duplicarVelocidadTroll():
-	trollSpeed *= 4
-	
-func reducirVelocidadTroll():
-	trollSpeed /= 4
-	
-func aumentarAmarillo():
-	yellowTrollSpeed *= 4
+func stat(unit, statName):
+	return stats[unit][statName]
+
+func setStat(unit, statName, newStat):
+	stats[unit][statName] = newStat
+
+func baseSpeed(unit):
+	return stat(unit, "baseSpeed")
+
+func speed(unit):
+	return stat(unit, "speed")
+
+func setSpeed(unit, newSpeed):
+	setStat(unit, "speed", newSpeed)
+
+func direction(unit):
+	return stat(unit, "direction")
+
+func setDirection(unit, newDirection):
+	setStat(unit, "direction", newDirection)
+
+func duplicarVelocidad(params):
+	var unit = params.affectedUnit
+	setSpeed(unit, baseSpeed(unit) * 2)
+
+func reducirVelocidad(params):
+	var unit = params.affectedUnit
+	setSpeed(unit, baseSpeed(unit) / 2)
 
 func dungeon():
 	return get_tree().get_root().get_node("dungeon")
 
-func replaceUnits(scriptFromUnitsToReplace, scenesOfUnitsToSpawn):
-	for unit in dungeon().unitsWith(scriptFromUnitsToReplace):
+func replaceUnits(type, scenesOfUnitsToSpawn):
+	for unit in dungeon().unitsOfType(type):
 		var unitPosition = unit.position
 		unit.destroy()
 		dungeon().spawnUnit(load(scenesOfUnitsToSpawn), unitPosition)
 
-func cambiarTrollsPorAmarillos():
-	replaceUnits("troll.gd", "res://amarillo.tscn")
+func cambiarPorAmarillos(params):
+	replaceUnits(params.affectedUnit, "res://amarillo.tscn")
 
-func cambiarAmarillosPorTrolls():
-	replaceUnits("amarillo.gd", "res://troll.tscn")
-	
-func reverseTrollDirection():
-	trollDirection *= (-1)
+func cambiarPorTrolls(params):
+	replaceUnits(params.affectedUnit, "res://troll.tscn")
+
+func reverseDirection(params):
+	var unit = params.affectedUnit
+	setDirection(unit, direction(unit) * (-1))

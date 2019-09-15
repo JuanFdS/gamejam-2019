@@ -1,14 +1,18 @@
 extends Container
 
 # Declare member variables here. Examples:
-const powers = [
-	{"name":"troll X4","rule":"duplicarVelocidadTroll"},
-	{"name":"amarillo X4","rule":"aumentarAmarillo"},
-	{"name":"trolls -> amarillos","rule":"cambiarTrollsPorAmarillos"},
-	{"name":"amarillos -> trolls","rule":"cambiarAmarillosPorTrolls"},
-	{"name":"X0.5","rule":"reducirVelocidadTroll"},
-	{"name":"reverse trolls","rule":"reverseTrollDirection"}
+
+var powers = [
+	createPower("troll X4","duplicarVelocidad", "troll.gd"),
+	createPower("amarillo X4","duplicarVelocidad", "amarillo.gd"),
+	createPower("trolls -> amarillos","cambiarPorAmarillos", "troll.gd"),
+	createPower("amarillos -> trolls","cambiarPorTrolls", "amarillo.gd"),
+	createPower("X0.5","reducirVelocidad",  "troll.gd"),
+	createPower("reverse trolls","reverseDirection", "troll.gd")
 ]
+
+func createPower(name, rule, affectedUnit):
+	return {"name": name, "rule": rule, "params": {"affectedUnit": load(affectedUnit)}}
 
 var reglamento = null
 var activeSkills = null
@@ -28,17 +32,16 @@ func createButton(positionInMenu):
 	bot1.set_size((self.get_size() / 3))
 	bot1.set_position(bot1.get_position() + positionInMenu*Vector2(bot1.get_size().x,0))
 	self.add_child(bot1)
-	var skillNumber = randi()%powers.size() 
-	print(skillNumber)
-	bot1.connect("pressed", self, "handleButtonPressed", [powers[skillNumber].rule, bot1, positionInMenu])
+	var skillNumber = randi()%powers.size()
+	bot1.connect("pressed", self, "handleButtonPressed", [powers[skillNumber], bot1, positionInMenu])
 	bot1.text = powers[skillNumber].name
 
 func removeButton(button):
 	self.remove_child(button)
 	button.queue_free()
 
-func handleButtonPressed(rule, button, positionInMenu):
-	reglamento.call(rule)
+func handleButtonPressed(skill, button, positionInMenu):
+	reglamento.activateSkill(skill)
 	var ruleName = button.text
 	self.removeButton(button)
 	createButton(positionInMenu)

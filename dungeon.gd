@@ -5,11 +5,10 @@ func spawnUnit(unitScene, position):
 	newUnit.position = position
 	self.add_child(newUnit)
 
-func unitsWith(script):
-	var behavior = load(script)
+func unitsOfType(type):
 	var units = []
 	for unit in get_children():
-		if(unit.get_script() && unit.get_script() == behavior):
+		if(unit.get_script() && unit.get_script() == type):
 			units.append(unit)
 	return units
 
