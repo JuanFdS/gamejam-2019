@@ -69,8 +69,9 @@ func dungeon():
 func replaceUnits(type, scenesOfUnitsToSpawn):
 	for unit in dungeon().unitsOfType(type):
 		var unitPosition = unit.position
+		var unitDirection = unit.direction
 		unit.destroy()
-		dungeon().spawnUnit(load(scenesOfUnitsToSpawn), unitPosition)
+		dungeon().spawnUnit(load(scenesOfUnitsToSpawn), unitPosition, unitDirection)
 
 func cambiarPorAmarillos(params):
 	replaceUnits(params.affectedUnit, "res://amarillo.tscn")

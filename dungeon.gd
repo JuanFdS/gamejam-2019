@@ -1,8 +1,9 @@
 extends Node2D
 
-func spawnUnit(unitScene, position):
+func spawnUnit(unitScene, position, direction):
 	var newUnit = unitScene.instance()
 	newUnit.position = position
+	newUnit.direction = direction
 	self.add_child(newUnit)
 
 func unitsOfType(type):
