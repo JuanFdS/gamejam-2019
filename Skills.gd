@@ -33,11 +33,12 @@ func _ready():
 			createButton(2)
 
 func createButton(positionInMenu):
+	print(positionInMenu)
 	var bot1 = Button.new()
 	bot1.set_size((self.get_size() / 3))
-	bot1.set_position(bot1.get_position() + positionInMenu*Vector2(bot1.get_size().x,0))
+	bot1.set_position(bot1.get_position() + positionInMenu * Vector2(bot1.get_size().x, 0))
 	self.add_child(bot1)
-	var skillNumber = randi()%powers.size()
+	var skillNumber = randi() % powers.size()
 	bot1.connect("pressed", self, "handleButtonPressed", [powers[skillNumber], bot1, positionInMenu])
 	bot1.text = powers[skillNumber].name
 

@@ -36,6 +36,7 @@ tracks/0/keys = {
 position = Vector2( 0, 50 )
 collision_layer = 0
 script = ExtResource( 1 )
+direction = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.342697, -0.980721 )

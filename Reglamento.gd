@@ -27,6 +27,7 @@ var stats = {
 				"xOffset": 0,
 			}
 	}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -94,4 +95,4 @@ func moveLine(params):
 	var offset = params.offset
 	for unit in dungeon().unitsOfType(unitType):
 		unit.position = unit.position + offset
-	
+

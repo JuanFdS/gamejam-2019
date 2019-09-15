@@ -35,6 +35,9 @@ func calculated_direction():
 			return ruleDirection
 		"down":
 			return ruleDirection * (-1)
+		_:
+			print("Falta definir direccion")
+			assert true == false
 
 func _physics_process(delta):
 	if(not(moving)):
@@ -45,5 +48,8 @@ func _physics_process(delta):
 	face_direction(thisFrameDirection)
 	
 	motion = thisFrameDirection.normalized() * rules().speed(get_script())
+	var collision = move_and_collide(motion * delta)
+	if collision:
+		collision.collider.win()
+		destroy()
 
-	move_and_slide(motion)
