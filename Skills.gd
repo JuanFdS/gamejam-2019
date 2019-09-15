@@ -9,7 +9,11 @@ var powers = [
 	createPower("amarillos -> trolls","cambiarPorTrolls", "amarillo.gd"),
 	createPower("X0.5","reducirVelocidad",  "troll.gd"),
 	createPower("reverse trolls","reverseDirection", "troll.gd"),
-	createPower("reverse amarillos","reverseDirection", "amarillo.gd")
+	createPower("reverse amarillos","reverseDirection", "amarillo.gd"),
+	{"name": "Move right yogur", "rule": "moveLine", "params": {"affectedUnit": load("amarillo.gd"), "offset": Vector2(15,45)}},
+	{"name": "Move right leche", "rule": "moveLine", "params": {"affectedUnit": load("troll.gd"), "offset": Vector2(15,45)}},
+	{"name": "Move left yogur", "rule": "moveLine", "params": {"affectedUnit": load("amarillo.gd"), "offset": Vector2(-15,-45)}},
+	{"name": "Move left leche", "rule": "moveLine", "params": {"affectedUnit": load("troll.gd"), "offset": Vector2(-15,-45)}}
 ]
 
 func createPower(name, rule, affectedUnit):

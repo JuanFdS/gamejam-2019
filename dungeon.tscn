@@ -114,6 +114,7 @@ cell_size = Vector2( 128, 64 )
 cell_tile_origin = 1
 cell_y_sort = true
 format = 1
+tile_data = PoolIntArray( 393219, 2, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 1063.48, 167.621 )

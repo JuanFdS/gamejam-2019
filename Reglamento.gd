@@ -18,11 +18,13 @@ var stats = {
 				"baseSpeed": baseTrollSpeed,
 				"speed": baseTrollSpeed,
 				"direction": forward,
+				"xOffset": 0,
 			},
 		Amarillo: {
 				"baseSpeed": baseAmarilloSpeed,
 				"speed": baseAmarilloSpeed,
 				"direction": forward,
+				"xOffset": 0,
 			}
 	}
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +33,6 @@ func _ready():
 
 func activateSkill(skill):
 	call(skill.rule, skill.get("params", []))
-	
 
 func stat(unit, statName):
 	return stats[unit][statName]
@@ -47,6 +48,12 @@ func speed(unit):
 
 func setSpeed(unit, newSpeed):
 	setStat(unit, "speed", newSpeed)
+
+func xOffset(unit):
+	return stat(unit, "xOffset")
+
+func setxOffset(unit, newxOffset):
+	setStat(unit, "xOffset", newxOffset)
 
 func direction(unit):
 	return stat(unit, "direction")
@@ -81,3 +88,10 @@ func cambiarPorTrolls(params):
 func reverseDirection(params):
 	var unit = params.affectedUnit
 	setDirection(unit, direction(unit) * (-1))
+
+func moveLine(params):
+	var unitType = params.affectedUnit
+	var offset = params.offset
+	for unit in dungeon().unitsOfType(unitType):
+		unit.position = unit.position + offset
+	
