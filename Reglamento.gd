@@ -12,7 +12,7 @@ var backward = forward * (-1)
 const baseTrollSpeed = 80
 const baseAmarilloSpeed = 100
 
-signal re_role_skills()
+signal re_role_skills(player)
 
 var stats = {
 		Troll: {
@@ -35,7 +35,7 @@ func _ready():
 
 func activateSkill(skill):
 	call(skill.rule, skill.get("params", []))
-	emit_signal("re_role_skills")
+	emit_signal("re_role_skills", skill.player)
 
 
 func stat(unit, statName):
@@ -92,6 +92,16 @@ func cambiarPorTrolls(params):
 func reverseDirection(params):
 	var unit = params.affectedUnit
 	setDirection(unit, direction(unit) * (-1))
+
+
+func _on_Reglamento_re_role_skills(player):
+	print(player)
+	var skillsPlayer1 = self.get_tree().get_root().get_node("dungeon").get_node("Skills")
+	var skillsPlayer2 = self.get_tree().get_root().get_node("dungeon").get_node("Skills2")
+	if(player == 1):
+		skillsPlayer1._on_Reglamento_re_role_skills()
+	if(player == 2):
+		skillsPlayer2._on_Reglamento_re_role_skills()
 
 func moveLine(params):
 	var unitType = params.affectedUnit

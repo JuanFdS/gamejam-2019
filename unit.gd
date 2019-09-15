@@ -49,7 +49,7 @@ func _physics_process(delta):
 	
 	motion = thisFrameDirection.normalized() * rules().speed(get_script())
 	var collision = move_and_collide(motion * delta)
-	if collision:
+	if collision && collision.collider is TileMap:
 		collision.collider.win()
 		destroy()
 
