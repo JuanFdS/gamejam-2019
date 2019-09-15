@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/musica 8bits POSTA.wav-a03d2c67e184375ba56b728c1d049ab2.sample"
+
+[deps]
+
+source_file="res://musica 8bits POSTA.wav"
+dest_files=[ "res://.import/musica 8bits POSTA.wav-a03d2c67e184375ba56b728c1d049ab2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

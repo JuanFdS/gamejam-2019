@@ -9,8 +9,8 @@ const Amarillo = preload("amarillo.gd")
 var forward = Vector2(2,-1)
 var backward = forward * (-1)
 
-const baseTrollSpeed = 80
-const baseAmarilloSpeed = 100
+const baseTrollSpeed = 20
+const baseAmarilloSpeed = 25
 
 signal re_role_skills(player)
 
@@ -67,7 +67,7 @@ func setDirection(unit, newDirection):
 
 func duplicarVelocidad(params):
 	var unit = params.affectedUnit
-	setSpeed(unit, baseSpeed(unit) * 2)
+	setSpeed(unit, baseSpeed(unit) * 3)
 
 func reducirVelocidad(params):
 	var unit = params.affectedUnit

@@ -21,13 +21,13 @@ var activeSkills = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	powers = [
-	createPower("troll X4","duplicarVelocidad", "troll.gd"),
-	createPower("amarillo X4","duplicarVelocidad", "amarillo.gd"),
-	createPower("trolls -> amarillos","cambiarPorAmarillos", "troll.gd"),
-	createPower("amarillos -> trolls","cambiarPorTrolls", "amarillo.gd"),
-	createPower("X0.5","reducirVelocidad",  "troll.gd"),
-	createPower("reverse trolls","reverseDirection", "troll.gd"),
-	createPower("reverse amarillos","reverseDirection", "amarillo.gd"),
+	createPower("Leche Rápida","duplicarVelocidad", "troll.gd"),
+	createPower("Yogurt Rápido","duplicarVelocidad", "amarillo.gd"),
+	createPower("Leches => Yogurts","cambiarPorAmarillos", "troll.gd"),
+	createPower("Yogurts => Leches","cambiarPorTrolls", "amarillo.gd"),
+	createPower("Leche lenta","reducirVelocidad",  "troll.gd"),
+	createPower("Leche de reversa","reverseDirection", "troll.gd"),
+	createPower("Yogurt de reversa","reverseDirection", "amarillo.gd"),
 	{"name": "Move right yogur", "rule": "moveLine", "params": {"affectedUnit": load("amarillo.gd"), "offset": Vector2(15,45)}},
     {"name": "Move right leche", "rule": "moveLine", "params": {"affectedUnit": load("troll.gd"), "offset": Vector2(15,45)}},
     {"name": "Move left yogur", "rule": "moveLine", "params": {"affectedUnit": load("amarillo.gd"), "offset": Vector2(-15,-45)}},
