@@ -15,6 +15,15 @@ var playersSkills = {
 func createPower(name, rule, affectedUnit):
 	return {"name": name, "rule": rule, "params": {"affectedUnit": load(affectedUnit)}, "player": player}
 
+func createMoveLinePower(name, affectedUnit, direction):
+	var offset
+	match direction:
+		"right":
+			offset = Vector2(15,45)
+		"left":
+			offset = Vector2(-15,-45)
+	return {"name": name, "rule": "moveLine", "params": {"affectedUnit": load(affectedUnit), "offset": offset}, "player": player}
+
 var reglamento = null
 var activeSkills = null
 
@@ -28,10 +37,10 @@ func _ready():
 	createPower("Leche lenta","reducirVelocidad",  "troll.gd"),
 	createPower("Leche de reversa","reverseDirection", "troll.gd"),
 	createPower("Yogurt de reversa","reverseDirection", "amarillo.gd"),
-	{"name": "Move right yogur", "rule": "moveLine", "params": {"affectedUnit": load("amarillo.gd"), "offset": Vector2(15,45)}},
-    {"name": "Move right leche", "rule": "moveLine", "params": {"affectedUnit": load("troll.gd"), "offset": Vector2(15,45)}},
-    {"name": "Move left yogur", "rule": "moveLine", "params": {"affectedUnit": load("amarillo.gd"), "offset": Vector2(-15,-45)}},
-    {"name": "Move left leche", "rule": "moveLine", "params": {"affectedUnit": load("troll.gd"), "offset": Vector2(-15,-45)}}]
+	createMoveLinePower("Mover yogurt a la derecha", "amarillo.gd", "right"),
+	createMoveLinePower("Mover yogurt a la izquierda", "amarillo.gd", "left"),
+	createMoveLinePower("Mover leche a la derecha", "troll.gd", "right"),
+	createMoveLinePower("Mover leche a la izquierda", "troll.gd", "left")]
 	randomize()
 	reglamento = get_tree().get_current_scene().get_node("Reglamento")
 	activeSkills = get_tree().get_current_scene().get_node("ActiveSkills")
