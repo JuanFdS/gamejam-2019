@@ -4,8 +4,9 @@
 [ext_resource path="res://leche.png" type="Texture" id=2]
 [ext_resource path="res://leche2.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 16.0
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 5.2085
+height = 24.188
 
 [sub_resource type="SpriteFrames" id=2]
 resource_local_to_scene = true
@@ -36,11 +37,11 @@ tracks/0/keys = {
 position = Vector2( 0, 50 )
 collision_layer = 0
 script = ExtResource( 1 )
-direction = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.342697, -0.980721 )
-shape = SubResource( 1 )
+position = Vector2( 0.22609, 29.1658 )
+rotation = 1.5708
+shape = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 light_mask = 0
